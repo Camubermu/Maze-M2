@@ -4,23 +4,23 @@ import { attachInput } from './input.js';
 import { State, CONFIG } from './state.js';
 import { redraw } from './ui.js';
 
-// === Запуск при загрузке страницы ===
+// === Inicio al cargar la página ===
 window.addEventListener('load', () => {
   initUI();
   attachInput();
 
-  // 🔹 Сразу запускаем первый уровень без стартового окна
+  // 🔹 Iniciamos inmediatamente el primer nivel sin ventana inicial
   newGame();
 
-  // Кнопки
+  // Botones
   document.getElementById('levelStartButton').addEventListener('click', () => beginPlay());
   document.getElementById('gameOverOk').addEventListener('click', () => retrySameLevel());
   document.getElementById('closeVictory').addEventListener('click', () => closeVictoryAndBackToMenu());
 });
 
-// === 🔹 Адаптация под iframe и изменение размера ===
+// === 🔹 Adaptación para iframe y cambio de tamaño ===
 
-// Обновление размеров canvas с сохранением пропорций
+// Actualización del tamaño del canvas manteniendo proporciones
 function resizeCanvas() {
   const container = document.querySelector('.game-container');
   if (!container) return;
@@ -36,14 +36,14 @@ function resizeCanvas() {
   State.canvas.height = mazeH * scale;
   State.ctx.setTransform(scale, 0, 0, scale, 0, 0);
 
-  // ✅ Проверяем, чтобы не вызвать redraw раньше времени
+  // ✅ Verificamos para no llamar redraw antes de tiempo
   if (State.maze) {
     redraw();
   }
 }
 
-// слушаем изменение окна
+// escuchamos el cambio de tamaño de la ventana
 window.addEventListener('resize', resizeCanvas);
 
-// вызываем при первом запуске
+// ejecutamos en el primer inicio
 setTimeout(resizeCanvas, 100);
