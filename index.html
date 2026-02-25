@@ -3,51 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Лабиринт M2</title>
+  <title>Laberinto M2</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <!-- Главный старт
+  <!-- Inicio principal
   <div id="startOverlay" class="overlay">
-    <h1>Лабиринт</h1>
-    <div class="footer-info">Разработчик: Andrei Pabiarzhyn • FunTech Projects</div>
-    <button id="startButton">Новая игра</button>
+    <h1>Laberinto</h1>
+    <div class="footer-info">Desarrollador: Andrei Pabiarzhyn • FunTech Projects</div>
+    <button id="startButton">Nuevo juego</button>
   </div>-->
 
-  <!-- Старт уровня -->
+  <!-- Inicio de nivel -->
   <div id="levelOverlay" class="overlay" style="display:none;">
-    <h1 id="levelTitle">Уровень 1</h1>
-    <p class="sub">У тебя 3 жизни. Удачи!</p>
-    <button id="levelStartButton">Старт</button>
+    <h1 id="levelTitle">Nivel 1</h1>
+    <p class="sub">Tienes 3 vidas. ¡Buena suerte!</p>
+    <button id="levelStartButton">Comenzar</button>
   </div>
 
-  <!-- Окно поражения (жизни кончились) -->
+  <!-- Ventana de derrota (sin vidas) -->
   <div id="gameOverOverlay" class="overlay" style="display:none;">
-    <h1>Упс, попробуй ещё раз</h1>
-    <p class="sub" id="lostLevelText">Ты проиграл на уровне 1</p>
+    <h1>Ups, inténtalo de nuevo</h1>
+    <p class="sub" id="lostLevelText">Perdiste en el nivel 1</p>
     <button id="gameOverOk">OK</button>
   </div>
 
-  <!-- Окно финальной победы -->
+  <!-- Ventana de victoria final -->
   <div id="victoryOverlay" class="overlay" style="display:none;">
-    <h1>Победа!</h1>
+    <h1>¡Victoria!</h1>
     <img id="victoryImage"
          src="assets/win.gif"
-         alt="Победа!">
-    <button id="closeVictory">Закрыть</button>
+         alt="¡Victoria!">
+    <button id="closeVictory">Cerrar</button>
   </div>
 
-  <!-- Игра -->
+  <!-- Juego -->
   <div class="game-container">
     <div class="hud">
-      <div id="levelBadge">Уровень: 1</div>
-      <div id="scoreDisplay">Очки: 0</div>
+      <div id="levelBadge">Nivel: 1</div>
+      <div id="scoreDisplay">Puntos: 0</div>
       <div id="lives" class="lives"></div>
     </div>
 
     <canvas id="mazeCanvas"></canvas>
-    <div class="footer-info">Разработчик: Andrei Pabiarzhyn • FunTech Projects</div>
+    <div class="footer-info">Desarrollador: Andrei Pabiarzhyn • FunTech Projects</div>
   </div>
 
   <script type="module" src="./js/main.js"></script>
