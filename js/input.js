@@ -2,7 +2,7 @@ import { onMoveKey } from './game.js';
 
 export function attachInput(){
   document.addEventListener('keydown', (e)=>{
-    // блокируем прокрутку/назад
+    // bloqueamos desplazamiento/retroceso
     if (e.keyCode === 32 || e.keyCode === 8){
       e.preventDefault();
     }
