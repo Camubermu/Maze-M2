@@ -28,9 +28,9 @@ export function initUI() {
 
 // === HUD ===
 export function updateHUD() {
-  State.dom.scoreDisplay.textContent = `Очки: ${State.score}`;
-  State.dom.levelBadge.textContent   = `Уровень: ${State.level}`;
-  State.dom.levelTitle.textContent   = `Уровень ${State.level}`;
+  State.dom.scoreDisplay.textContent = `Puntos: ${State.score}`;
+  State.dom.levelBadge.textContent   = `Nivel: ${State.level}`;
+  State.dom.levelTitle.textContent   = `Nivel ${State.level}`;
 }
 
 export function renderLives() {
@@ -43,7 +43,7 @@ export function renderLives() {
   }
 }
 
-// === Показ/скрытие ===
+// === Mostrar / Ocultar ===
 export function show(el) { if (el) el.style.display = 'flex'; }
 export function hide(el) { if (el) el.style.display = 'none'; }
 
@@ -51,7 +51,7 @@ export function showLevelOverlay() { updateHUD(); renderLives(); show(State.dom.
 export function hideLevelOverlay() { hide(State.dom.levelOverlay); }
 
 export function showGameOver(level) {
-  State.dom.lostLevelText.textContent = `Ты проиграл на уровне ${level}`;
+  State.dom.lostLevelText.textContent = `Perdiste en el nivel ${level}`;
   show(State.dom.gameOverOverlay);
 }
 export function hideGameOver() { hide(State.dom.gameOverOverlay); }
@@ -61,17 +61,17 @@ export function hideVictory() { hide(State.dom.victoryOverlay); }
 
 export function shakeCanvas() {
   State.canvas.classList.remove('shake');
-  void State.canvas.offsetWidth; // перезапуск анимации
+  void State.canvas.offsetWidth; // reiniciar animación
   State.canvas.classList.add('shake');
 }
 
-// === Изображения ===
+// === Imágenes ===
 const heroImg = new Image();
 heroImg.src = 'assets/hero.png';
 const portalImg = new Image();
 portalImg.src = 'assets/portal.png';
 
-// === Отрисовка лабиринта ===
+// === Dibujar laberinto ===
 export function redraw() {
   if (!State.maze || !Array.isArray(State.maze) || !State.maze[0]) return;
 
@@ -82,7 +82,7 @@ export function redraw() {
   ctx.strokeStyle = '#333';
   ctx.lineWidth = 2;
 
-  // Рисуем стены лабиринта
+  // Dibujamos las paredes del laberinto
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       const cell = State.maze[i][j];
@@ -94,7 +94,7 @@ export function redraw() {
     }
   }
 
-  // === Портал (финиш) ===
+  // === Portal (meta) ===
   const pad = cellSize * 0.1;
   const finishX = (cols - 1) * cellSize + pad;
   const finishY = (rows - 1) * cellSize + pad;
@@ -105,7 +105,7 @@ export function redraw() {
   if (portalImg.complete) ctx.drawImage(portalImg, finishX, finishY, size, size);
   ctx.restore();
 
-  // === Герой ===
+  // === Héroe ===
   const playerX = State.playerCol * cellSize + pad;
   const playerY = State.playerRow * cellSize + pad;
   ctx.save();
@@ -114,7 +114,7 @@ export function redraw() {
   if (heroImg.complete) ctx.drawImage(heroImg, playerX, playerY, size, size);
   ctx.restore();
 
-  // Вспомогательные функции
+  // Funciones auxiliares
   function line(x1, y1, x2, y2) {
     ctx.beginPath();
     ctx.moveTo(x1, y1);
