@@ -28,7 +28,7 @@ body {
   overflow: hidden;
 }
 
-/* === Контейнер === */
+/* === Contenedor === */
 .game-container {
   width: 100%;
   max-width: 800px;
@@ -78,7 +78,7 @@ body {
   transform: scale(0.85);
 }
 
-/* === Лабиринт === */
+/* === Laberinto === */
 #mazeCanvas {
   display: block;
   width: 100%;
@@ -91,7 +91,7 @@ body {
     inset 0 0 20px rgba(34, 255, 243, 0.08);
 }
 
-/* === Оверлеи === */
+/* === Overlays === */
 .overlay {
   position: fixed;
   inset: 0;
@@ -123,7 +123,7 @@ body {
   text-shadow: 0 0 4px rgba(34, 255, 243, 0.3);
 }
 
-/* === Кнопки === */
+/* === Botones === */
 .overlay button {
   margin-top: 10px;
   padding: 12px 26px;
@@ -144,7 +144,7 @@ body {
 }
 .overlay button:active { transform: scale(1); }
 
-/* === Футер === */
+/* === Pie de página === */
 .footer-info {
   text-align: center;
   margin-top: 12px;
@@ -170,13 +170,13 @@ body {
   }
 }
 
-/* Неоновые линии лабиринта (через Canvas) */
+/* Líneas neón del laberinto (a través de Canvas) */
 canvas {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
 
-/* === Для героя и портала, если это изображения === */
+/* === Para el héroe y el portal, si son imágenes === */
 .hero {
   filter: drop-shadow(0 0 6px var(--primary)) drop-shadow(0 0 10px var(--primary-glow));
 }
@@ -185,13 +185,13 @@ canvas {
   filter: drop-shadow(0 0 10px var(--accent)) drop-shadow(0 0 20px var(--accent));
 }
 
-/* === Мягкий неон для линий и границ === */
+/* === Neón suave para líneas y bordes === */
 canvas.neon {
   filter: drop-shadow(0 0 3px rgba(34, 255, 243, 0.5))
           drop-shadow(0 0 10px rgba(34, 255, 243, 0.3));
 }
 
-/* === Эффект плавного появления уровня === */
+/* === Efecto de aparición suave del nivel === */
 @keyframes fadeInCanvas {
   from { opacity: 0; filter: blur(5px); }
   to { opacity: 1; filter: blur(0); }
@@ -200,7 +200,7 @@ canvas.neon {
   animation: fadeInCanvas 0.8s ease;
 }
 
-/* === Встряска === */
+/* === Sacudida === */
 @keyframes shake {
   0%,100% { transform: translateX(0); }
   20% { transform: translateX(-5px); }
@@ -210,10 +210,10 @@ canvas.neon {
 }
 .shake { animation: shake .25s ease; }
 
-/* Встряска должна быть видимой */
+/* La sacudida debe ser visible */
 .game-container {
-  position: relative; /* обязательно */
-  overflow: visible;  /* позволяем двигаться canvas */
+  position: relative; /* obligatorio */
+  overflow: visible;  /* permitimos que el canvas se mueva */
 }
 
 #mazeCanvas.shake {
