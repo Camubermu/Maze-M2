@@ -1,5 +1,5 @@
 // === sound.js ===
-// Простая система системных звуков с использованием Web Audio API
+// Sistema simple de sonidos usando Web Audio API
 
 let audioCtx;
 
@@ -7,7 +7,7 @@ function initAudio() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 }
 
-function playTone(freq, duration = 0.15, type = 'sine', volume = 0.1) { // 🔉 по умолчанию тише
+function playTone(freq, duration = 0.15, type = 'sine', volume = 0.1) { // 🔉 más bajo por defecto
   initAudio();
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
@@ -20,7 +20,7 @@ function playTone(freq, duration = 0.15, type = 'sine', volume = 0.1) { // 🔉 
   osc.stop(audioCtx.currentTime + duration);
 }
 
-// звуки событий
+// sonidos de eventos
 export const Sounds = {
   step() { playTone(600, 0.1, 'square', 0.075); },
   hit() { playTone(120, 0.25, 'sawtooth', 0.1); },
