@@ -1,4 +1,4 @@
-// Генерация лабиринта DFS (разрешено: right, left, down)
+// Generación del laberinto DFS (permitido: derecha, izquierda, abajo)
 export function generateMaze(rows, cols) {
   const grid = [];
   for (let i = 0; i < rows; i++) {
