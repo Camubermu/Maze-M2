@@ -8,16 +8,16 @@ import {
   showGameOver, hideGameOver
 } from './ui.js';
 
-// === Новая игра ===
+// === Nuevo juego ===
 export function newGame() {
   State.level = 1;
   State.score = 0;
   startLevel(true);
 }
 
-// === Запуск уровня ===
+// === Inicio de nivel ===
 export function startLevel(fromStartOverlay = false) {
-  // при старте уровня всегда 3 жизни
+  // al comenzar el nivel siempre hay 3 vidas
   State.lives = CONFIG.livesPerLevel;
   State.playerRow = 0;
   State.playerCol = 0;
@@ -26,34 +26,34 @@ export function startLevel(fromStartOverlay = false) {
   renderLives();
   redraw();
 
-  // Показываем старт уровня (без стартового экрана)
+  // Mostramos inicio de nivel (sin pantalla de inicio)
   showLevelOverlay();
 }
 
-// === Начало игры ===
+// === Comienzo del juego ===
 export function beginPlay() {
   hideLevelOverlay();
   State.gameActive = true;
 }
 
-// === Управление движением ===
+// === Control de movimiento ===
 export function onMoveKey(code) {
   if (!State.gameActive) return;
 
   const cell = State.maze[State.playerRow][State.playerCol];
   let moved = false;
 
-  if (code === 32) { // Space → вправо
+  if (code === 32) { // Space → derecha
     if (!cell.walls.right && State.playerCol < CONFIG.cols - 1) {
       State.playerCol++; moved = true;
     } else { wrongMove(); return; }
   }
-  else if (code === 8) { // Backspace → влево
+  else if (code === 8) { // Backspace → izquierda
     if (!cell.walls.left && State.playerCol > 0) {
       State.playerCol--; moved = true;
     } else { wrongMove(); return; }
   }
-  else if (code === 13) { // Enter → вниз
+  else if (code === 13) { // Enter → abajo
     if (!cell.walls.bottom && State.playerRow < CONFIG.rows - 1) {
       State.playerRow++; moved = true;
     } else { wrongMove(); return; }
@@ -66,7 +66,7 @@ export function onMoveKey(code) {
   }
 }
 
-// === Ошибочный ход ===
+// === Movimiento incorrecto ===
 function wrongMove() {
   Sounds.hit();
   if (State.lives > 0) {
@@ -81,14 +81,14 @@ function wrongMove() {
   }
 }
 
-// === Повтор уровня ===
+// === Reintentar el mismo nivel ===
 export function retrySameLevel() {
   hideGameOver();
-  // заново стартуем тот же уровень со свежими 3 жизнями
+  // volvemos a iniciar el mismo nivel con 3 vidas nuevas
   startLevel(false);
 }
 
-// === Проверка финиша ===
+// === Verificación de meta ===
 function checkFinish() {
   const atFinish = (
     State.playerRow === CONFIG.rows - 1 &&
@@ -100,7 +100,7 @@ function checkFinish() {
   State.score++;
   updateHUD();
 
-  // Финальная победа
+  // Victoria final
   if (State.score >= CONFIG.maxScoreToWin) {
     State.gameActive = false;
     Sounds.gameWin();
@@ -108,13 +108,13 @@ function checkFinish() {
     return;
   }
 
-  // Следующий уровень
+  // Siguiente nivel
   State.level++;
   State.gameActive = false;
   startLevel(false);
 }
 
-// === После победы возвращаемся к 1 уровню ===
+// === Después de la victoria volvemos al nivel 1 ===
 export function closeVictoryAndBackToMenu() {
   hideVictory();
   State.level = 1;
